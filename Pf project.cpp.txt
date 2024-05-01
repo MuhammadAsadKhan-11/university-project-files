@@ -1,0 +1,288 @@
+﻿#include<iostream>
+#include<stdlib.h>
+#include<string>
+using namespace std;
+string arr1[100], arr3[100];
+string arr2[100], arr4[100], arr5[100];
+int total = 0;
+void enter(void);
+void show(void);
+void search(void);
+void update(void);
+void deletedata(void);
+void exit();
+
+
+int main()
+{
+        system("CLS");
+        int value;
+        while (true)//if the user enter the number form 1 to 6 condition is true the programm will run and if he enter the wrong number the programm will not run and the compiler ask the user again to enter the right number
+        {
+                cout << "\t\t\t\tSTUDENT DATA MANAGEMENT SYSTEM  :" << endl;
+                cout << "press 1. To enter data\n" << endl;
+                cout << "press 2. To enter show data\n" << endl;
+                cout << "press 3. To enter search data\n" << endl;
+                cout << "press 4. To enter updata data\n" << endl;
+                cout << "press 5. To enter delete data\n" << endl;
+                cout << "press 6. To enter exit\n" << endl;
+                cin >> value;
+                switch (value)
+                {
+                case 1:
+                        enter();
+                        break;
+                case 2:
+                        show();
+                        break;
+                case 3:
+                        search();
+                        break;
+                case 4:
+                        update();
+                        break;
+                case 5:
+                        deletedata();
+                        break;
+                case 6:
+                        exit(0);
+                        break;
+                default:
+                        cout << "Invalid input" << endl;
+                        cout << "Enter numbers between 1 to 6 :" << endl;
+                        cout << "Number with their functions are written above \n";
+                        break;
+                }
+        }
+}
+//for entering data at run time 
+void enter()
+{
+        int choice;
+        cout << "how many students data do you want to enter :" << endl;
+        cin >> choice;
+        if (total == 0)
+        {
+
+
+                total = total + choice;
+                for (int i = 0; i < choice; i++)
+                {
+                        cout << "Enter data of students :" << i + 1 << endl << endl;
+                        cin.ignore();
+                        cout << "Enter name of the student:";
+                        getline(cin, arr1[i]);
+
+
+                        cout << "Enter roll number:";
+                        getline(cin, arr2[i]);
+
+
+                        cout << "Enter coure:";
+                        getline(cin, arr3[i]);
+
+
+                        cout << "Enter semester :";
+                        getline(cin, arr4[i]);
+
+
+                        cout << "Enter contact :";
+                        getline(cin, arr5[i]);
+
+
+                }
+        }
+        else {
+
+
+                for (int i = total; i < total + choice; i++)
+                {
+                        cout << "Enter data of students :" << i + 1 << endl;
+                        cout << "Enter name of the student:" << endl;
+                        getline(cin, arr1[i]);
+
+
+                        cout << "Enter roll number:" << endl;
+                        getline(cin, arr2[i]);
+
+
+                        cout << "Enter coure:" << endl;
+                        getline(cin, arr3[i]);
+
+
+
+
+                        cout << "Enter semester :" << endl;
+                        getline(cin, arr4[i]);
+
+
+                        cout << "Enter contact :" << endl;
+                        getline(cin, arr5[i]);
+
+
+                }
+                total = total + choice;
+        }
+}
+//for showing data
+void show()
+{
+        if (total == 0)
+        {
+                cout << "No record yet!" << endl;
+        }
+        else
+        {
+                for (int i = 0; i < total; i++)
+                {
+                        cout << "data of student:" << i + 1 << endl;
+                        cout << "Name:" << arr1[i] << endl;
+                        cout << "Roll number" << arr2[i] << endl;
+                        cout << "course name:" << arr3[i] << endl;
+                        cout << "semester:" << arr4[i] << endl;
+                        cout << "Contact :" << arr5[i] << endl;
+                }
+
+
+        }
+}
+//for searching data 
+void search()
+{
+        if (total == 0)// this condition is used if we havn't entered the data at run time it will be showed 
+        {
+                cout << "No entered data yet!" << endl;
+
+
+        }
+        else// this condition is used when their is an entered data 
+        {
+
+
+                string rollno;
+                cout << "Enter roll number of student you want to search :" << endl;
+                cin >> rollno;
+                for (int i = 0; i < total; i++)
+                {
+
+
+                        if (rollno == arr2[i])
+                        {
+
+
+                                cout << "data of student:" << i + 1 << endl;
+                                cout << "Name:" << arr1[i] << endl;
+                                cout << "Roll number" << arr2[i] << endl;
+                                cout << "course name:" << arr3[i] << endl;
+                                cout << "semester:" << arr4[i] << endl;
+                                cout << "Contact :" << arr5[i] << endl;
+
+
+                        }
+                }
+
+
+        }
+}
+void update()//for updating student data 
+{
+        if (total == 0)
+        {
+                cout << "no data entered yet!" << endl;
+
+
+        }
+        else
+        {
+
+
+                string rollno;
+                cout << "Enter roll no:" << endl;
+                cin >> rollno;
+                for (int i = 0; i < total; i++)
+                {
+
+
+                        if (rollno == arr2[i])
+                        {
+                                cout << "Previous data:\n";//previous data 
+                                cout << "data of student:" << i + 1 << endl;
+                                cout << "Name:" << arr1[i] << endl;
+                                cout << "Roll number" << arr2[i] << endl;
+                                cout << "course name:" << arr3[i] << endl;
+                                cout << "semester:" << arr4[i] << endl;
+                                cout << "Contact :" << arr5[i] << endl;
+                                cout << "Enter new data \n";//from here the programmer enter new data to update the privious data 
+                                cout << "Enter name:" << endl;
+                                cin.ignore();
+                                getline(cin, arr1[i]);
+                                cout << "Enter roll number:" << endl;
+                                getline(cin, arr2[i]);
+
+
+                                cout << "Enter course name:" << endl;
+                                getline(cin, arr3[i]);
+                                cout << "Enter semester :" << endl;
+                                getline(cin, arr4[i]);
+                                cout << "Enter contact number:" << endl;
+                                getline(cin, arr5[i]);
+                        }
+                }
+        }
+}
+void deletedata()
+{
+        if (total == 0)
+        {
+                cout << "No data entered yet!" << endl;
+
+
+        }
+        else
+        {
+
+
+                int a;
+                cout << "press 1. To delete full data :" << endl;
+                cout << "press 2. To delete specific data :" << endl;
+                cin >> a;
+                if (a == 1)// for deleting full record 
+                {
+                        total = 0;
+                        cout << "All record is deleted :" << endl;
+                }
+                else if (a == 2)//for deleting a specific student roll number
+                {
+                        string rollno;
+                        cout << "enter student roll number you want to delete their data:" << endl;
+                        cin >> rollno;
+                        for (int i = 0; i < total; i++)
+                        {
+                                if (rollno == arr2[i])
+                                {
+                                        for (int j = i; j < total; j++)// this loop will store the data of one array in the next one and delete the current data in array
+                                        {
+                                                arr1[j] = arr1[j + 1];
+                                                arr2[j] = arr2[j + 1];
+                                                arr3[j] = arr3[j + 1];
+                                                arr4[j] = arr4[j + 1];
+                                                arr5[j] = arr5[j + 1];
+                                        }
+                                        total--;//at the end the total and remaining data will be left and the enterted roll number data in the above loop will be rewritted
+                                        cout << "Your required record is deleted...!!!" << endl;
+                                }
+
+
+                        }
+                }
+                else
+                {
+                        cout << "invalid input!" << endl;
+                }
+        }
+}
+void exit()
+{
+        cout << "exit program..." << endl;
+        exit(0);
+}
